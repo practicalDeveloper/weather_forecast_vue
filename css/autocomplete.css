@@ -1,0 +1,76 @@
+/*the container must be positioned relative:*/
+.autocomplete {
+    position: relative;
+    display: flex;
+    width: var(--searchAreaWidth);
+  }
+  
+  .autocomplete-itemsContainer {
+    
+    border: 1px solid #d4d4d4;
+    /* border-bottom: none; */
+    /* border-radius: 6px;  */
+  
+    background-color: rgb(240, 240, 240); 
+    padding: 10px;
+  }
+  
+  
+  .autocomplete-items {
+    
+      margin-top: -0px;
+      margin-left: -1px;
+      margin-right: -1px;
+      border: 1px solid #d4d4d4;
+      height: auto;
+      /* border-bottom: none; */
+      overflow-y:scroll; /*show scrollbar */
+    }
+  
+    .autocomplete-itemsContainer,
+    .autocomplete-items
+    {
+      position: absolute;
+      box-shadow: 2px 2px 3px rgb(104, 104, 104);
+      z-index: 99;
+      /*position the autocomplete items to be the same width as the container:*/
+      top: 100%;
+      left: 0;
+      right: 0;
+    }
+    
+    .autocomplete-items div {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff; 
+      border-bottom: 1px solid #d4d4d4; 
+    }
+    
+    /*when hovering an item:*/
+    .autocomplete-items div:hover {
+      cursor: pointer;
+      background-color: rgb(210, 225, 255); 
+    }
+    
+    /*when navigating through the items using the arrow keys:*/
+    .autocomplete-active {
+      background-color: rgb(163, 191, 219) !important; 
+      color: #ffffff; 
+    }
+  
+    .itemCity {
+      font-weight: bold;
+      font-size: 17px;
+    }
+  
+    .itemCountry {
+      font-size: 15px;
+      color: rgb(129, 129, 129);
+    }
+  
+    .itemCity,
+    .itemCountry,
+    .autocomplete-itemsContainer
+    {
+      font-family: "Georgia", Times, serif;
+    }
