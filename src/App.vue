@@ -52,12 +52,18 @@ import { resourcesMixin } from '../js/resourcesMixin.js'
 import CountriesCodes from "./components/CountriesCodes";
 import CountriesTextBox from "./components/CountriesTextBox";
 import ForecastTypeTabs from "./components/ForecastTypeTabs";
+import PinImg from "../data/icon.png";
 
 import View from 'ol/View'
 import Map from 'ol/Map'
 import TileLayer from 'ol/layer/Tile'
-import Layer from 'ol/layer/Layer'
+import Feature from 'ol/Feature'
 import OSM from 'ol/source/OSM'
+
+import VectorSource from "ol/source/Vector";
+import Point from "ol/geom/Point";
+import VectorLayer from "ol/layer/Vector";
+
 import { fromLonLat } from 'ol/proj'
 
 // importing the OpenLayers stylesheet is required for having
@@ -124,6 +130,16 @@ export default {
     }, //computed 
 
     methods: {
+
+        searchLocationClick() {
+            //this.proceedForecastType();
+            let asss = this.mapObject.getLayers().getArray();
+
+            this.mapObject.getLayers().getArray()
+                .filter(layer => layer.get('name') === 'Marker')
+                .forEach(layer => this.mapObject.removeLayer(layer));
+            debugger;
+        }, //searchLocationClick 
 
         getCountriesCodes(param1, param2) {
             this.countriesCodes = param1;
@@ -267,10 +283,6 @@ export default {
             }
         }, //proceedForecastType
 
-        searchLocationClick() {
-            this.proceedForecastType();
-        }, //searchLocationClick 
-
         /**
         * convertion of the coordinates from DDDMM  format into decimal degrees
         */
@@ -280,7 +292,7 @@ export default {
                 let locodeCoord = this.locationCoord.split(" ");
                 let a = locodeCoord[0].slice(0, -1);
                 let b = locodeCoord[1].slice(0, -1);
-
+                debugger;
                 let quotientA = Math.floor(a / 100);
                 let quotientB = Math.floor(b / 100);
 
@@ -308,8 +320,29 @@ export default {
         */
         reCenterMap(latitude, longitude) {
 
+            //centers the map on the cooordinate
             this.mapObject.getView().setZoom(12);
             this.mapObject.getView().setCenter(fromLonLat([longitude, latitude]));
+
+            // removes previous marker
+            this.mapObject.getLayers().getArray()
+                .filter(layer => layer.get('name') === 'Marker')
+                .forEach(layer => this.mapObject.removeLayer(layer));
+
+            // puts marker
+            const source = new VectorSource();
+            source.addFeatures([new Feature(new Point(fromLonLat([longitude, latitude])))]);
+
+            const layer = new VectorLayer({
+                source: source,
+                name : "Marker",
+                style: {
+                'circle-radius': 10,
+                'circle-fill-color': 'rgba(20, 100, 240, 0.3)',
+                'circle-stroke-color': 'rgba(20, 100, 240, 0.7)',
+            },
+            });
+            this.mapObject.addLayer(layer);
 
         }, //reCenterMap  
 
