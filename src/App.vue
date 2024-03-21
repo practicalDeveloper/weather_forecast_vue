@@ -132,19 +132,12 @@ export default {
     methods: {
 
         searchLocationClick() {
-            //this.proceedForecastType();
-            let asss = this.mapObject.getLayers().getArray();
-
-            this.mapObject.getLayers().getArray()
-                .filter(layer => layer.get('name') === 'Marker')
-                .forEach(layer => this.mapObject.removeLayer(layer));
-            debugger;
+            this.proceedForecastType();
         }, //searchLocationClick 
 
         getCountriesCodes(param1, param2) {
             this.countriesCodes = param1;
             this.allCountriesCities = param2;
-            debugger;
         },
 
 
@@ -329,7 +322,7 @@ export default {
                 .filter(layer => layer.get('name') === 'Marker')
                 .forEach(layer => this.mapObject.removeLayer(layer));
 
-            // puts marker
+            // puts the marker dot
             const source = new VectorSource();
             source.addFeatures([new Feature(new Point(fromLonLat([longitude, latitude])))]);
 
@@ -337,11 +330,12 @@ export default {
                 source: source,
                 name : "Marker",
                 style: {
-                'circle-radius': 10,
-                'circle-fill-color': 'rgba(20, 100, 240, 0.3)',
-                'circle-stroke-color': 'rgba(20, 100, 240, 0.7)',
-            },
+                    'circle-radius': 10,
+                    'circle-fill-color': 'rgba(20, 100, 240, 0.3)',
+                    'circle-stroke-color': 'rgba(20, 100, 240, 0.7)',
+                },
             });
+            
             this.mapObject.addLayer(layer);
 
         }, //reCenterMap  
