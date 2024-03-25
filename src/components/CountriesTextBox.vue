@@ -105,7 +105,7 @@ export default {
 
                 let getCountryName = this.GetCountryNameByCode.bind(this);
                 // to filter all cities for entered value
-                let resultsFilter = this.allCountryCities.filter(function (itemCountry) {
+                this.allCountryCities.filter(function (itemCountry) {
                     if (itemCountry.length > 1) {
                         let itemCountryCode = itemCountry[0];
                         let itemCityNameEng = itemCountry[1];
@@ -164,7 +164,6 @@ export default {
             let listDiv; // common DIV container for all array elements
             let listDivContainer; // DIV container with header
             let itemListDiv; //DIV container with particular array element
-            let maxItemsCount = 10; // max count of cities items for displaying scrollbar
 
             //hides countries list 
             this.closeAllLists();

@@ -12,7 +12,7 @@
             <!-- Text area to search place -->
             <div class="textSearchArea">
                 <countries-text-box v-bind:countryCodes="countriesCodes" v-bind:allCountryCities="allCountriesCities"
-                    @getLocation="getLocation" @searchClick="searchLocationClick" @searchClick2="resetMap"
+                    @getLocation="getLocation" @searchClick="searchLocationClick"
                     @clearClick="clearClick" />
             </div>
 
@@ -52,7 +52,6 @@ import { resourcesMixin } from '../js/resourcesMixin.js'
 import CountriesCodes from "./components/CountriesCodes";
 import CountriesTextBox from "./components/CountriesTextBox";
 import ForecastTypeTabs from "./components/ForecastTypeTabs";
-import PinImg from "../data/icon.png";
 
 import View from 'ol/View'
 import Map from 'ol/Map'
@@ -66,8 +65,7 @@ import VectorLayer from "ol/layer/Vector";
 
 import { fromLonLat } from 'ol/proj'
 
-// importing the OpenLayers stylesheet is required for having
-// good looking buttons!
+// the OpenLayers stylesheet
 import 'ol/ol.css'
 
 export default {
@@ -318,9 +316,7 @@ export default {
             this.mapObject.getView().setCenter(fromLonLat([longitude, latitude]));
 
             // removes previous marker
-            this.mapObject.getLayers().getArray()
-                .filter(layer => layer.get('name') === 'Marker')
-                .forEach(layer => this.mapObject.removeLayer(layer));
+            this.removeMapMarker();
 
             // puts the marker dot
             const source = new VectorSource();
@@ -340,6 +336,13 @@ export default {
 
         }, //reCenterMap  
 
+        // removes dot marker on the map
+        removeMapMarker() {
+            this.mapObject.getLayers().getArray()
+                .filter(layer => layer.get('name') === 'Marker')
+                .forEach(layer => this.mapObject.removeLayer(layer));
+        },
+
         /**
         * resets map zoom and coordinates to zero
         */
@@ -354,6 +357,7 @@ export default {
             this.locationCountryCode = '';
             this.locationCountry = '';
             this.locationCoord = '';
+            this.removeMapMarker();
 
             this.proceedForecastType();
         },
