@@ -12,7 +12,7 @@
             <!-- Text area to search place -->
             <div class="textSearchArea">
                 <countries-text-box v-bind:countryCodes="countriesCodes" v-bind:allCountryCities="allCountriesCities"
-                    @getLocation="getLocation" @searchClick="searchLocationClick"
+                    @getLocation="getLocation" @searchClick="searchLocationClick" @searchClick2="resetMap"
                     @clearClick="clearClick" />
             </div>
 
@@ -52,6 +52,7 @@ import { resourcesMixin } from '../js/resourcesMixin.js'
 import CountriesCodes from "./components/CountriesCodes";
 import CountriesTextBox from "./components/CountriesTextBox";
 import ForecastTypeTabs from "./components/ForecastTypeTabs";
+import PinImg from "../data/icon.png";
 
 import View from 'ol/View'
 import Map from 'ol/Map'
@@ -65,7 +66,8 @@ import VectorLayer from "ol/layer/Vector";
 
 import { fromLonLat } from 'ol/proj'
 
-// the OpenLayers stylesheet
+// importing the OpenLayers stylesheet is required for having
+// good looking buttons!
 import 'ol/ol.css'
 
 export default {

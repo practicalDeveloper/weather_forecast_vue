@@ -42,17 +42,21 @@ div.Title p {
 }
 .header { 
   grid-area: header; 
+  /* background-color: #bbb;  */
 }
 .sidebar { 
   grid-area: sidebar; 
+  /* background-color: #ccc;  */
 }
 .content { 
   grid-area: content; 
+  /* background-color: #eee;  */
 }
 
 .searchArea , .mapArea{  
   height: calc(100% - var(--textSearchAreaHeight));
    background-color: #f18383; 
+  /* height: 100%; background-color: #f18383; */
 }
 
 .textSearchArea {  
