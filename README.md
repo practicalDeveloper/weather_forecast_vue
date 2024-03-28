@@ -1,4 +1,4 @@
-# testproject
+# weather_forecast_vue
 
 ## Project setup
 ```
