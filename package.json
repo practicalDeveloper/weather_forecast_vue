@@ -7,8 +7,9 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@fawmi/vue-google-maps": "^0.9.79",
     "core-js": "^3.6.5",
+    "ol": "^9.1.0",
+    "ol-ext": "^4.0.17",
     "vue": "^3.0.0",
     "vue-papa-parse": "^3.1.0",
     "vue-router": "^4.0.0-0",
