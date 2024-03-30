@@ -1,4 +1,7 @@
-# weather_forecast_vue
+# Weather forecast
+
+Online demo:
+https://practicaldeveloper.github.io/weather_forecast_vue/
 
 ## Project setup
 ```
