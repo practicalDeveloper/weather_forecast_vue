@@ -37,26 +37,22 @@ div.Title p {
                        ". . . . ."
                        ". content . sidebar ."
                        ". . . . .";
-  grid-template-columns:  10px 1fr 5px 600px 10px;
+  grid-template-columns:  10px 1fr 5px 30% 10px;
   grid-template-rows: 10px 90px 5px 1fr 10px;
 }
 .header { 
   grid-area: header; 
-  /* background-color: #bbb;  */
 }
 .sidebar { 
   grid-area: sidebar; 
-  /* background-color: #ccc;  */
 }
 .content { 
   grid-area: content; 
-  /* background-color: #eee;  */
 }
 
 .searchArea , .mapArea{  
   height: calc(100% - var(--textSearchAreaHeight));
    background-color: #f18383; 
-  /* height: 100%; background-color: #f18383; */
 }
 
 .textSearchArea {  

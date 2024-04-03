@@ -6,11 +6,7 @@
   }
   
   .autocomplete-itemsContainer {
-    
     border: 1px solid #d4d4d4;
-    /* border-bottom: none; */
-    /* border-radius: 6px;  */
-  
     background-color: rgb(240, 240, 240); 
     padding: 10px;
   }
@@ -23,7 +19,6 @@
       margin-right: -1px;
       border: 1px solid #d4d4d4;
       height: auto;
-      /* border-bottom: none; */
       overflow-y:scroll; /*show scrollbar */
     }
   

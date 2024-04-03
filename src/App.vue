@@ -52,7 +52,6 @@ import { resourcesMixin } from '../js/resourcesMixin.js'
 import CountriesCodes from "./components/CountriesCodes";
 import CountriesTextBox from "./components/CountriesTextBox";
 import ForecastTypeTabs from "./components/ForecastTypeTabs";
-import PinImg from "../data/icon.png";
 
 import View from 'ol/View'
 import Map from 'ol/Map'

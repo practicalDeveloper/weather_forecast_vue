@@ -1,32 +1,30 @@
 form {
-    /* This bit sets up the horizontal layout */
+    /* Sets up the horizontal layout */
     display:flex;
     flex-direction:row;
     
-    /* This bit draws the box around it */
+    /* Draws the box around it */
     border: 1px solid grey;
   
-    /* I've used padding so you can see the edges of the elements. */
+    /* The edges of the elements */
     padding: 2px 2px 5px 5px ;
   }
   
   input {
     /* Tell the input to use all the available space */
     flex-grow:2;
-    /* And hide the input's outline, so the form looks like the outline */
+    /* Hide the input's outline */
     border:none;
     font-size: 20px;
     font-family :'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   
   input:focus {
-    /* removing the input focus blue box. Put this on the form if you like. */
+    /* removing the input focus blue box */
     outline: none;
   }
   
   button {
-    /* Just a little styling to make it pretty */
-  
     border:1px solid rgb(255, 255, 255);
     background:rgb(255, 255, 255);
     text-align: center;
