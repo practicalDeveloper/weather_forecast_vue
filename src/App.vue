@@ -11,8 +11,8 @@
 
             <!-- Text area to search place -->
             <div class="textSearchArea">
-                <countries-text-box v-bind:countryCodes="countriesCodes" v-bind:allCountryCities="allCountriesCities"
-                    @getLocation="getLocation" @searchClick="searchLocationClick" @searchClick2="resetMap"
+                <countries-text-box v-bind:countryCodes="countriesCodes" v-bind:allCountryCities="countriesCities"
+                    @getLocation="getLocation" @searchClick="searchLocationClick"
                     @clearClick="clearClick" />
             </div>
 
@@ -79,9 +79,8 @@ export default {
     mixins: [extensionsMixin, resourcesMixin],
     data() {
         return {
-            content: [],
-            countriesCodes: [], // all countries with codes (in format - {countryCode : 'code', countryName : 'Country'})
-            allCountriesCities: [], // all ordered data from CSV-file
+            countriesCodes: [], // all countries with codes from the CSV file
+            countriesCities: [], // countries codes, cities and coordinates from the CSV file
             mapObject: undefined, // OpenStreetMap map
             locationCity: '', // city name in the text area to find a place  
             locationCityEng: '', // city name in English in the text area to find a place 
@@ -136,7 +135,7 @@ export default {
 
         getCountriesCodes(param1, param2) {
             this.countriesCodes = param1;
-            this.allCountriesCities = param2;
+            this.countriesCities = param2;
         },
 
 
