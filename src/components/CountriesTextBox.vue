@@ -43,12 +43,12 @@ export default {
     },
 
     props: {
-        countryCodes: {
+        countriesCodesFilter: {
             type: Array,
             required: true
         },
-        allCountryCities: {
-            type: Number,
+        countriesCitiesFilter: {
+            type: Array,
             required: true
         }
     },
@@ -105,7 +105,7 @@ export default {
 
                 let getCountryName = this.GetCountryNameByCode.bind(this);
                 // to filter all cities for entered value
-                let resultsFilter = this.allCountryCities.filter(function (itemCountry) {
+                this.countriesCitiesFilter.filter(function (itemCountry) {
                     if (itemCountry.length > 1) {
                         let itemCountryCode = itemCountry[0];
                         let itemCityNameEng = itemCountry[1];
@@ -279,7 +279,7 @@ export default {
         }, //closeAllLists    
 
         GetCountryNameByCode(countryCode) {
-            let countryName = this.countryCodes.filter(itemCountry => itemCountry[0] == countryCode);
+            let countryName = this.countriesCodesFilter.filter(itemCountry => itemCountry[0] == countryCode);
             return countryName[0];
         }, //GetCountryNameByCode
 

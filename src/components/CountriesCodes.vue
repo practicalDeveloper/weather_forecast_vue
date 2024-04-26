@@ -7,7 +7,8 @@ export default {
 
     data() {
         return {
-
+            allCountriesCities: [], // all countries with codes from the CSV file
+            allCountriesCodes: [], // countries codes, cities and coordinates from the CSV file
         }
     },
 

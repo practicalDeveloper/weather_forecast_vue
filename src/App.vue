@@ -11,7 +11,8 @@
 
             <!-- Text area to search place -->
             <div class="textSearchArea">
-                <countries-text-box v-bind:countryCodes="countriesCodes" v-bind:allCountryCities="countriesCities"
+                <countries-text-box v-bind:countriesCodesFilter="countriesCodes" 
+                    v-bind:countriesCitiesFilter="countriesCities"
                     @getLocation="getLocation" @searchClick="searchLocationClick"
                     @clearClick="clearClick" />
             </div>
@@ -396,8 +397,14 @@ export default {
 
         /**
         * found openweathermap location though text search area
+        * paramCity - city in the textbox
+        * paramCityEng - city in English
+        * paramCountry - country name
+        * paramCountryCode - country code
+        * paramCoord - coordinates of the city
         */
         async getLocation(paramCity, paramCityEng, paramCountry, paramCountryCode, paramCoord) {
+
             if (paramCity != '') {
                 let isFound = false; // found coordinates
                 let isFoundSecond = false; // found coordinates
@@ -471,7 +478,7 @@ export default {
         },
 
     }, //methods 
-}
+} // export default 
 </script>
 
 
