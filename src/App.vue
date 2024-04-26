@@ -396,7 +396,7 @@ export default {
         }, //isFoundLocation
 
         /**
-        * found openweathermap location though text search area
+        * finds openweathermap location though text search area
         * paramCity - city in the textbox
         * paramCityEng - city in English
         * paramCountry - country name
