@@ -66,8 +66,7 @@ import VectorLayer from "ol/layer/Vector";
 
 import { fromLonLat } from 'ol/proj'
 
-// importing the OpenLayers stylesheet is required for having
-// good looking buttons!
+// importing the OpenLayers stylesheet
 import 'ol/ol.css'
 
 export default {
@@ -88,7 +87,7 @@ export default {
             locationCountry: '', // country name in the text area for looking a place  
             locationCountryCode: '',
             locationCoord: '', // coordinates of place
-            weatherApi: "73dc5e4e7deba9d8890cb4258e24e0b5",  // api Open Weather Map
+            weatherApi: "49698eb024149b3ee8492a86f8df67ec",  // api Open Weather Map
             forecastType: '', // chosen weather forecast type
 
         }
@@ -284,7 +283,6 @@ export default {
                 let locodeCoord = this.locationCoord.split(" ");
                 let a = locodeCoord[0].slice(0, -1);
                 let b = locodeCoord[1].slice(0, -1);
-                debugger;
                 let quotientA = Math.floor(a / 100);
                 let quotientB = Math.floor(b / 100);
 
