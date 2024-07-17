@@ -133,9 +133,9 @@ export default {
             this.proceedForecastType();
         }, //searchLocationClick 
 
-        getCountriesCodes(param1, param2) {
-            this.countriesCodes = param1;
-            this.countriesCities = param2;
+        getCountriesCodes(codeName, cityName) {
+            this.countriesCodes = codeName;
+            this.countriesCities = cityName;
         },
 
 
