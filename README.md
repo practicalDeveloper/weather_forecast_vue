@@ -7,12 +7,20 @@ Online demo is available at https://practicaldeveloper.github.io/weather_forecas
 
 # Project setup
 
-- Clone the project: 
+- Clone the project:
+  ```
   git clone https://github.com/practicalDeveloper/weather_forecast_vue
-- enter the project directory: 
+  ```
+- enter the project directory:
+  ```
   cd weather_forecast_vue
-- install dependencies: 
+  ```
+- install dependencies:
+  ```
   npm install
-- launch the local server: 
+  ```
+- launch the local server:
+  ```
   npm run serve
+  ```
   
