@@ -1,4 +1,6 @@
 # Weather forecast
+The source code for the article https://tproger.ru/articles/prilozhenie-dlya-prognoza-pogody-na-vue-js
+
 The project is Vue JS, HTML based application to show weather forecast based on the location which the user can set manually.
 
 In the project are used: OpenWeatherMap API to get weather forecast, OpenStreetMap to show location on the map, Papa Parse library to get list of locations from the csv files.
