@@ -47,7 +47,6 @@
 
 <script>
 
-import Papa from 'papaparse';
 import { extensionsMixin } from '../js/extensionsMixin.js'
 import { resourcesMixin } from '../js/resourcesMixin.js'
 import CountriesCodes from "./components/CountriesCodes";
@@ -279,6 +278,7 @@ export default {
         * convertion of the coordinates from DDDMM  format into decimal degrees
         */
         calculateCoordinates() {
+
             if (this.locationCoord != '') {
                 // splits string with coordinates by space
                 let locodeCoord = this.locationCoord.split(" ");
