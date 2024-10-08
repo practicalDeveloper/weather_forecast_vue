@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "array-sort": "^1.0.0",
     "core-js": "^3.6.5",
     "ol": "^9.1.0",
     "ol-ext": "^4.0.17",

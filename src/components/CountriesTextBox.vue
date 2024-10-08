@@ -27,6 +27,7 @@
 <script>
 import { extensionsMixin } from '../../js/extensionsMixin.js'
 import { resourcesMixin } from '../../js/resourcesMixin.js'
+import ArraySort from 'array-sort'
 
 export default {
     mixins: [extensionsMixin, resourcesMixin],
@@ -90,6 +91,7 @@ export default {
 
         clearClick() {
             this.getCityInput().value = '';
+            this.getCityInput().focus();
             this.$emit('clearClick');
         },
 
@@ -104,6 +106,8 @@ export default {
                 let isCyrrilic = cyrillicPattern.test(value);
 
                 let getCountryName = this.GetCountryNameByCode.bind(this);
+                
+                
                 // to filter all cities for entered value
                 this.countriesCitiesFilter.filter(function (itemCountry) {
                     if (itemCountry.length > 1) {
@@ -111,7 +115,6 @@ export default {
                         let itemCityNameEng = itemCountry[1];
                         let itemCityNameRus = itemCountry[2];
                         let itemCoord = itemCountry[3];
-
                         let city = isCyrrilic ? itemCityNameRus.toLowerCase() : itemCityNameEng.toLowerCase();
                         // checks city name
                         if (city != '' && city.startsWith(value.toLowerCase())) {
@@ -142,6 +145,8 @@ export default {
                     }
                 });
 
+
+                ArraySort(foundCountriesCities, 'countryName', 'cityName');
                 this.showPopupList(foundCountriesCities);
             }
 
@@ -159,12 +164,10 @@ export default {
 
         showPopupList(arr) {
             let val = this.getCityInput().value;
-            const location = "Location";
 
             let listDiv; // common DIV container for all array elements
             let listDivContainer; // DIV container with header
             let itemListDiv; //DIV container with particular array element
-            let maxItemsCount = 10; // max count of cities items for displaying scrollbar
 
             //hides countries list 
             this.closeAllLists();
@@ -173,7 +176,7 @@ export default {
 
             listDivContainer = document.createElement("DIV");
             listDivContainer.setAttribute("id", "itemsContainer");
-            listDivContainer.innerHTML = "<span>" + location + "</span>";
+            listDivContainer.innerHTML = "<span>" + this.location + "</span>";
             listDivContainer.setAttribute("class", "autocomplete-itemsContainer");
             this.getCityInput().parentNode.appendChild(listDivContainer);
 
@@ -260,7 +263,7 @@ export default {
         /**
         * Hides list of the countries and cities under the text field field 
         */
-        closeAllLists(elmnt) {
+        closeAllLists(elt) {
             /*close all autocomplete lists in the document,
             except the one passed as an argument:*/
             let x = document.getElementsByClassName("autocomplete-items");
@@ -271,7 +274,7 @@ export default {
             }
 
             for (let i = 0; i < x.length; i++) {
-                if (elmnt != x[i] && elmnt != this.getCityInput()) {
+                if (elt != x[i] && elt != this.getCityInput()) {
                     x[i].parentNode.removeChild(x[i]);
                 }
             }
@@ -289,13 +292,13 @@ export default {
             if (e.keyCode == 40) {
                 /* pressed button with arrow DOWN */
                 this.currentFocus++;
-                /* to make next item noticable */
+                /* to make next item noticeable */
                 this.addActive(cityDiv, "down");
 
             } else if (e.keyCode == 38) { //up
                 /* pressed button with arrow UP */
                 this.currentFocus--;
-                /* to make current item noticable */
+                /* to make current item noticeable */
                 this.addActive(cityDiv, "up");
 
             } else if (e.keyCode == 13) {

@@ -21,6 +21,7 @@ export const resourcesMixin = {
             forecastToday: 'Прогноз погоды сегодня в ',
             windSpeed: 'Скорость ветра:',
             searchPlace: 'Поиск места',
+            location: 'Местоположение',
 
           }
     }
