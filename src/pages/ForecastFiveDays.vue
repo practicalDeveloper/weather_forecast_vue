@@ -1,7 +1,11 @@
 <template>
-    <div>
+    <!-- <div>
         <h1>{{forecastFiveDays}} {{ $route.params.currentCity }} </h1>
-    </div>
+    </div> -->
+
+    <div class="Title2">
+                <p>{{forecastFiveDays}} {{ $route.params.currentCity }} </p>
+   </div>
 
     <div class="weatherInfo">
 

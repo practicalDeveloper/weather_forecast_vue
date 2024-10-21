@@ -35,6 +35,21 @@ export const extensionsMixin = {
         dateWithoutTime (date) {
           var date = new Date(date);
           return date.setHours(0,0,0,0);
+        },
+
+        /**
+         * date without time
+         */
+        getRootVarCSS (varName) {
+          let root = document.querySelector(':root');
+          let rootStyles = getComputedStyle(root);
+          return rootStyles.getPropertyValue(varName);
+  
+        },
+
+        setRootVarCSS (varName, value) {
+          document.documentElement.style.setProperty(varName, value);
+  
         }
     }
 }

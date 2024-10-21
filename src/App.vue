@@ -1,13 +1,10 @@
 <template>
     <div class="grid-container">
+        
         <div class="header">
             <div class="Title">
                 <p>{{weatherForecast}}</p>
             </div>
-        </div>
-
-        <!-- Text area and map -->
-        <div class="content">
 
             <!-- Text area to search place -->
             <div class="textSearchArea">
@@ -16,7 +13,10 @@
                     @getLocation="getLocation" @searchClick="searchLocationClick"
                     @clearClick="clearClick" />
             </div>
+        </div>
 
+        <!-- Text area and map -->
+        <div class="content">
             <!-- OpenStreet map -->
             <div class="mapArea" id="gMapArea">
                 <div ref="map-root" style="width: 100%; height: 100%">
@@ -47,6 +47,7 @@
 
 <script>
 
+import Papa from 'papaparse';
 import { extensionsMixin } from '../js/extensionsMixin.js'
 import { resourcesMixin } from '../js/resourcesMixin.js'
 import CountriesCodes from "./components/CountriesCodes";
@@ -58,7 +59,6 @@ import Map from 'ol/Map'
 import TileLayer from 'ol/layer/Tile'
 import Feature from 'ol/Feature'
 import OSM from 'ol/source/OSM'
-
 
 import VectorSource from "ol/source/Vector";
 import Point from "ol/geom/Point";
@@ -101,6 +101,8 @@ export default {
         window.removeEventListener("resize", this.resizeHandler);
     },
     mounted() {
+        this.setShortWeatherArea();
+
         //this is where is created the OpenLayers map
         this.mapObject = new Map({
             // the map will be created using the 'map-root' ref
@@ -131,6 +133,7 @@ export default {
 
         searchLocationClick() {
             this.proceedForecastType();
+            this.setNormalWeatherArea();
         }, //searchLocationClick 
 
         getCountriesCodes(codeName, cityName) {
@@ -278,7 +281,6 @@ export default {
         * convertion of the coordinates from DDDMM  format into decimal degrees
         */
         calculateCoordinates() {
-
             if (this.locationCoord != '') {
                 // splits string with coordinates by space
                 let locodeCoord = this.locationCoord.split(" ");
@@ -352,6 +354,17 @@ export default {
         }, //resetMap  
 
 
+        setShortWeatherArea() {
+            let value = this.getRootVarCSS('--shortAreaHeight');
+            this.setRootVarCSS('--weatherAreaHeight', value)
+        }, //setShortWeatherArea  
+
+        setNormalWeatherArea() {
+            let value = this.getRootVarCSS('--normalAreaHeight');
+            this.setRootVarCSS('--weatherAreaHeight', value)
+        }, //setNormalWeatherArea  
+
+
         clearClick() {
             this.locationCity = '';
             this.locationCountryCode = '';
@@ -360,6 +373,7 @@ export default {
             this.removeMapMarker();
 
             this.proceedForecastType();
+            this.setShortWeatherArea();
         },
 
         /**
@@ -448,6 +462,7 @@ export default {
                 this.locationCountry = paramCountry;
                 this.locationCountryCode = paramCountryCode;
                 this.locationCoord = paramCoord;
+                this.setNormalWeatherArea();
                 await this.proceedForecastType();
             }
         },

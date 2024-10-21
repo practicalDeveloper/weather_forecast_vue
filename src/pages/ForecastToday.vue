@@ -1,8 +1,13 @@
 <template>
-    <div>
+    <!-- <div>
         <h1>{{forecastToday}} {{ $route.params.currentCity }} </h1>
-    </div>
+    </div> -->
 
+
+    <div class="Title2">
+                <p>{{forecastToday}} {{ $route.params.currentCity }} </p>
+   </div>
+   
     <div class="weatherInfo">
 
         <!-- Time and weather icon-->

@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <h1>{{forecastNow}} {{ $route.params.currentCity }} </h1>
-  </div>
+
+  <div class="Title2">
+                <p>{{forecastNow}} {{ $route.params.currentCity }} </p>
+   </div>
+
   <div id="weatherInfoNow" class="weatherInfo">
     <div id="weatherDescription">
       <div id="temperature">
@@ -10,7 +12,7 @@
       </div>
 
       <div id="description">
-        <p>{{ getDescription }}</p>
+         <p>{{ getDescription }}</p> 
       </div>
     </div>
 
@@ -144,10 +146,7 @@ export default {
 </script>
 
 <style>
-#weatherInfoNow {
-  height: 300px;
-  position: relative;
-}
+
 
 #weatherDescription {
   color: white;
@@ -160,7 +159,7 @@ export default {
 }
 
 #temperature {
-  font-size: 60px;
+  font-size: 50px;
   text-align: center;
   display: flex;
 }
@@ -171,6 +170,7 @@ img {
 
 #description {
   text-align: center;
+  line-height: 15px;
   font-size: 20px;
 }
 

@@ -1,6 +1,15 @@
 :root {
+  --searchAreaWidth: 350px;
+  --darkBlueBackground: #0248a9;
+  --weatherInfoBackground: #6195ed;
+  --weatherPadding: 20px;
+  --weatherAreaHeight: 350px;
+  --normalAreaHeight: 350px;
+  --shortAreaHeight: 50px;
+}
+
+@media screen and (min-width: 468px) {
+  :root {
     --searchAreaWidth: 655px;
-    --darkBlueBackground: #0248a9;
-    --weatherInfoBackground: #6195ed;
-    --weatherPadding: 20px
   }
+}
